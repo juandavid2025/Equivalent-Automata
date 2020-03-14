@@ -38,21 +38,21 @@ public class MachineSelecctionWindowController implements Initializable{
 
 	private void nextWindow(String type, ActionEvent event) {
 		
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/EntriesStatesWindow.fxml"));
-		Parent root = null;
 		try {
-			root = loader.load();
-		} catch (IOException e) {
+			
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/EntriesStatesWindow.fxml"));
+			Parent root = (Parent)fxmlLoader.load();
+			EntriesStatesWindowController controller = fxmlLoader.<EntriesStatesWindowController>getController();
+			controller.setWorld(type);
+			Scene scene = new Scene(root);
+			Stage stage = (Stage) mealeyMachine_btn.getScene().getWindow();
+			stage.setScene(scene);
+			stage.show();
+			
+			
+		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		EntriesStatesWindowController controller = loader.getController();
-		controller.setWorld(type);
-		Scene scene = new Scene(root);
-		Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
-		//window.setResizable(false);
-		window.setScene(scene);
-		window.show();
 		
 	}
     

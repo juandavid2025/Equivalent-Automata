@@ -35,6 +35,10 @@ public class TablesCalculateWindowController implements Initializable{
 	    }
 
 	
+	    public void setWorld(String message) {
+	    	System.out.print("message received from entries to tables window message = "+message);
+	    }
+	    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
